@@ -54,7 +54,7 @@ def main():
     # TODO: Create TabularDataset using TabularDatasetFactory
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-    ### YOUR CODE HERE #####################################
+    ### YOUR CODE HERE start ###############################################################################
 
     from azureml.core.dataset import Dataset
     from azureml.data.datapath import DataPath
@@ -65,23 +65,23 @@ def main():
     # Create the TabularDataset using TabularDatasetFactory
     ds = Dataset.Tabular.from_delimited_files(path=data_path)
     
-    ### YOUR CODE HERE #######################################
+    ### YOUR CODE HERE end ################################################################################
 
     
     x, y = clean_data(ds)
 
     # TODO: Split data into train and test sets.
-    ### YOUR CODE HERE ########################################
+    ### YOUR CODE HERE start ##############################################################################
 
     # Split the data into train and test sets
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
-    ### YOUR CODE HERE ########################################
+    ### YOUR CODE HERE end ################################################################################
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
-    run.log("Accuracy", np.float(accuracy))
+    run.log("accuracy", np.float(accuracy))
 
 if __name__ == '__main__':
     main()
