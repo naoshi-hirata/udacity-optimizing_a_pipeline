@@ -74,17 +74,18 @@ def main():
     ### YOUR CODE HERE start ##############################################################################
 
     # Split the data into train and test sets
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
 
     ### YOUR CODE HERE end ################################################################################
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
-    run.log("accuracy", np.float(accuracy))
+    run.log("Accuracy", np.float(accuracy))
     
     ### MY CODE start w/o TODO instraction #################################################################
     import joblib
+    os.makedirs('outputs', exist_ok=True)
     joblib.dump(model, 'outputs/hyperdrive_model.joblib')
     ### MY CODE end ########################################################################################
 
