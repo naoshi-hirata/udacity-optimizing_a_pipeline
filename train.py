@@ -82,6 +82,11 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("accuracy", np.float(accuracy))
+    
+    ### MY CODE start w/o TODO instraction #################################################################
+    import joblib
+    joblib.dump(model, 'outputs/hyperdrive_model.joblib')
+    ### MY CODE end ########################################################################################
 
 if __name__ == '__main__':
     main()
