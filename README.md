@@ -17,9 +17,11 @@ This model is then compared to an Azure AutoML run.
 This dataset contains data about 
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
-
+The best performing model was a VotingEnsemble.
+ 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+The pipeline 
 
 **What are the benefits of the parameter sampler you chose?**
 
