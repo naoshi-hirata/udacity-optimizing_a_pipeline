@@ -56,15 +56,20 @@ def main():
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
     ### YOUR CODE HERE start ###############################################################################
 
-    from azureml.core.dataset import Dataset
-    from azureml.data.datapath import DataPath
+    #from azureml.core.dataset import Dataset
+    #from azureml.data.datapath import DataPath
 
     # Define the path to the CSV file
-    data_path = DataPath(datastore=None, path_on_datastore='https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv')
+    #data_path = DataPath(datastore=None, path_on_datastore='https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv')
 
     # Create the TabularDataset using TabularDatasetFactory
-    ds = Dataset.Tabular.from_delimited_files(path=data_path)
+    #ds = Dataset.Tabular.from_delimited_files(path=data_path)
     
+    from azureml.core.dataset import Dataset
+    url_paths = ['https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv']
+    dataset = Dataset.File.from_files(path=url_paths)
+    ds = dataset.to_pandas_dataframe()
+
     ### YOUR CODE HERE end ################################################################################
 
     
